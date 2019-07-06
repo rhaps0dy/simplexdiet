@@ -3,6 +3,7 @@ import sys
 import cvxopt as cv
 import numpy as np
 import pandas as pd
+import collections
 
 class NutrientRequirements:
     def __init__(self, line):
@@ -15,6 +16,7 @@ class Food:
         if line==[]: return
 
         self.usda_id = line[0]
+        print(f"Reading food {self.usda_id}")
         self.cost    = float(line[1])
         self.lower   = float(line[2]) if line[2]!="None" else 0.0
         self.upper   = float(line[3]) if line[3]!="None" else 100.0 #hardcoded upper limit
@@ -22,8 +24,10 @@ class Food:
             csvlines= [l for l in csv.reader(file_food)]
             self.name=csvlines[0][0]
 
-            self.nutrients= {n.name: float(l[2]) for n in profile
-                             for l in csvlines if len(l)>=3 and n.pattern==l[0] and n.unit==l[1]}
+            self.nutrients= collections.defaultdict(
+                lambda: 0.0,
+                {n.name: float(l[2]) for n in profile
+                             for l in csvlines if len(l)>=3 and n.pattern==l[0] and n.unit==l[1]})
 
             for nutrient in profile:
                 if nutrient.name not in self.nutrients:

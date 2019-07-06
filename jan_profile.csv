@@ -1,0 +1,8 @@
+"208", "Calories",            "kcal", "Energy",                         2850.0, 3150
+"204", "Fat",                 "g",    "Total lipid (fat)",              None,   None
+"606", "Saturated fats",      "g",    "Fatty acids, total saturated",   None,   20
+"601", "Cholesterol",         "mg",   "Cholesterol",                    0,    None
+"205", "Carbs",               "g",    "Carbohydrate, by difference",    250,   None
+"269", "Sugar",               "g",    "Sugars, total",                  None,  150.0
+"291", "Fiber",               "g",    "Fiber, total dietary",           55,    None
+"203", "Protein",             "g",    "Protein",                        160,  200
